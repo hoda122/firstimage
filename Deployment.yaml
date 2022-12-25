@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: firstdeployment
+
+spec:
+  replicas: 3
+  selector: 
+    matchLabels: 
+      app: firstimage
+  
+  template: 
+    metadata:
+       name: my-first-pod
+       labels:
+          app: firstimage
+
+    spec:
+      containers:
+        - name: firstimage
+          image: hoda122/firstimage
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
